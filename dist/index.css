@@ -62,7 +62,7 @@ body {
   background-color: transparent;
   color: hsl(234deg, 11%, 52%);
 }
-.add-todo .submit {
+.add-todo #submit {
   background: none;
   border: none;
   font-size: 1rem;
@@ -70,7 +70,7 @@ body {
   color: hsl(233deg, 14%, 35%);
   margin: 0 1rem;
 }
-.add-todo .submit:hover {
+.add-todo #submit:hover {
   color: hsl(220deg, 98%, 61%);
 }
 
@@ -95,6 +95,11 @@ body {
   border-bottom: 1px solid hsl(237deg, 14%, 26%);
   display: flex;
   align-items: center;
+}
+
+.completed {
+  color: hsl(234deg, 11%, 52%);
+  text-decoration: line-through;
 }
 
 .todo-container {
@@ -178,6 +183,9 @@ body {
 }
 .todo-content:hover .delete-todo {
   opacity: 1;
+}
+.todo-content .delete-todo:hover {
+  color: hsl(220deg, 98%, 61%);
 }
 
 .controls {

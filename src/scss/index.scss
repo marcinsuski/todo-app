@@ -60,7 +60,7 @@ body {
         color: $DarkGrayishBlue;
     }
 
-    .submit {
+    #submit {
         background: none;
         border: none;
         font-size: 1rem;
@@ -96,6 +96,11 @@ body {
         display: flex;
         align-items: center;
     }
+}
+
+.completed {
+    color: $DarkGrayishBlue;
+    text-decoration: line-through;
 }
 
 .todo-container {
@@ -195,7 +200,9 @@ body {
 
        
     }
-
+    .delete-todo:hover {
+        color: $BrightBlue;
+    }
 
 }
 
