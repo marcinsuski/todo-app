@@ -5,15 +5,113 @@
 }
 
 body {
+  width: 100vw;
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
+  background-color: hsl(235deg, 21%, 11%);
+  background-image: url("../src/images/bg-desktop-dark.jpg");
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: clamp(20rem, 3wv + 18rem, 42rem);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 4rem;
+  align-items: center;
+  color: hsl(234deg, 39%, 85%);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: space-between;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.add-todo {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+.add-todo input {
+  width: 100%;
+  height: 2.5rem;
+  outline: transparent;
+  border: transparent;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: hsl(235deg, 24%, 19%);
+}
+
+.todos {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.todo-list {
+  width: 100%;
+}
+.todo-list .todo-item {
+  width: 100%;
+  font-size: 0.8rem;
+  height: 3rem;
+  outline: transparent;
+  border: none;
+  background-color: hsl(235deg, 24%, 19%);
+  border-bottom: 1px solid hsl(237deg, 14%, 26%);
+  display: flex;
+  align-items: center;
+}
+.todo-list .todo-item .todo-container {
+  position: relative;
+  display: inline-block;
+  margin: 1rem;
+  cursor: pointer;
+}
+.todo-list .todo-item .todo-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.todo-list .todo-item .todo-container .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-bottom: 2px solid hsl(237deg, 14%, 26%);
+  background-color: hsl(235deg, 24%, 19%);
+}
+.todo-list .todo-item .todo-container .checkmark .input:checked {
+  background-color: red;
 }
 
 .attribution {
+  color: hsl(234deg, 11%, 52%);
+  width: 100%;
+  position: fixed;
+  bottom: 1rem;
   font-size: 11px;
   text-align: center;
 }
 
 .attribution a {
   color: hsl(228deg, 45%, 44%);
+  text-decoration: none;
 }/*# sourceMappingURL=index.css.map */

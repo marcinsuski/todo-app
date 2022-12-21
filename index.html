@@ -19,22 +19,82 @@
             href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
             rel="stylesheet"
         />
-      <link rel="stylesheet" href="./dist/index.css">
+        <link rel="stylesheet" href="./dist/index.css" />
     </head>
-    <body>
-        Todo
 
-        <!-- Add dynamic number -->
-        items left All Active Completed Clear Completed Drag and drop to reorder
-        list
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Todo</h1>
+                <img src="./src/images/icon-sun.svg" alt="lightmode" />
+            </div>
+            <div class="add-todo">
+                <input
+                    type="text"
+                    id="addTodo"
+                    placeholder="Create a new Todo..."
+                />
+            </div>
+            <div class="todos">
+                <div class="todo-list">
+                    <div class="todo-item">
+                        <input
+                            class="radio"
+                            type="radio"
+                            checked="checked"
+                        />Complete online JavaScript course
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-container">
+                            <input
+                                class="radio"
+                                type="radio"
+                                name="radio"
+                            /><span class="checkmark"></span>
+                        </div>
+                        Jog around the park 3x
+                    </div>
+                    <div class="todo-item">
+                        <input class="radio" type="radio" name="radio" />10
+                        minutes meditation
+                    </div>
+                    <div class="todo-item">
+                        <input class="radio" type="radio" name="radio" />Read
+                        for 1 hour
+                    </div>
+                    <div class="todo-item">
+                        <input class="radio" type="radio" name="radio" />Pick up
+                        groceries
+                    </div>
+                    <div class="todo-item">
+                        <input
+                            class="radio"
+                            type="radio"
+                            name="radio"
+                        />Complete Todo App of Frontend Mentor
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                items left All Active Completed Clear Completed
+            </div>
+            <div class="reorder">Drag and drop to reorder list</div>
+        </div>
 
         <div class="attribution">
             Challenge by
             <a
                 href="https://www.frontendmentor.io?ref=challenge"
                 target="_blank"
+                rel="noopener"
                 >Frontend Mentor</a
-            >. Coded by <a href="#">Your Name Here</a>.
+            >. Coded by
+            <a
+                href="https://github.com/marcinsuski"
+                target="_blank"
+                rel="noopener"
+                >Marcin Suski</a
+            >.
         </div>
 
         <script src="./src/script.js"></script>
