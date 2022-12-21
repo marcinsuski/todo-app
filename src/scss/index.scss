@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-    width: clamp(20rem, 5vw + 25rem, 42rem);
+    width: clamp(20rem, 10vw + 20rem, 42rem);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -45,15 +45,32 @@ body {
     margin-bottom: 1rem;
     border-radius: 5px;
     background-color: $VeryDarkDesaturatedBlue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     input {
         width: 100%;
-        height: 2.5rem;
+        height: 3rem;
         outline: transparent;
         border: transparent;
         padding: 0.5rem;
         border-radius: 5px;
         background-color: transparent;
+        color: $DarkGrayishBlue;
+    }
+
+    .submit {
+        background: none;
+        border: none;
+        font-size: 1rem;
+        font-weight: 700;
+        color: $VeryDarkGrayishBlue;
+        margin: 0 1rem;
+
+        &:hover {
+            color: $BrightBlue;
+        }
     }
 }
 
@@ -62,14 +79,11 @@ body {
     border-radius: 5px;
     background-color: $VeryDarkDesaturatedBlue;
     margin-bottom: 2rem;
-
- 
 }
 
 .todo-list {
     width: 100%;
     background-color: transparent;
- 
 
     .todo-item {
         width: 100%;
@@ -81,73 +95,142 @@ body {
         border-bottom: 1px solid $VeryDarkGrayishBlue2;
         display: flex;
         align-items: center;
-
-        .todo-container {
-            width: 18px;
-            height: 18px;
-            display: block;
-            position: relative;
-            display: flex;
-            margin: 0 1rem;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-
-            input {
-                position: absolute;
-                opacity: 0;
-                cursor: pointer;
-         
-            }
-
-            .checkmark {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 18px;
-                width: 18px;
-                border-radius: 50%;
-                border: 1px solid $VeryDarkGrayishBlue2;
-                background-color: transparent;
-            }
-
-            .checkmark:after {
-                content: "";
-                position: absolute;
-                display: none;
-            }
-
-            .todo-container input:checked ~ .checkmark:after {
-                display: block;
-            }
-
-            .todo-container .checkmark:after {
-                top: 9px;
-                left: 9px;
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: black;
-            }
-
-            input:checked ~ .checkmark {
-                background-image: linear-gradient(
-                    to top left,
-                    (#d05aff, #5af4ff)
-                );
-               
-            }
-            input:checked ~ .checkmark::after {
-                background-image: url("../src/images/icon-check.svg");
-                background-position: center;
-                background-repeat: no-repeat;
- 
-              
-            }
-        }
     }
 }
 
+.todo-container {
+    width: 18px;
+    height: 18px;
+    display: block;
+    position: relative;
+    display: flex;
+    margin: 0 1rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        background-clip: padding-box;
+        background-color: $VeryDarkDesaturatedBlue;
+        border: 1px solid $VeryDarkGrayishBlue2;
+        
+    }
+
+    .checkmark:before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        bottom: -4px;
+        right: -4px;
+        border-radius: 50%;
+        border: 1px solid $VeryDarkGrayishBlue2;
+        background-image: linear-gradient(to top left, (#d05aff, #5af4ff));
+        display: block;
+        z-index: -1;
+
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        top: 4px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+
+    }
+
+    input:checked ~ .checkmark {
+        background-image: linear-gradient(to top left, (#d05aff, #5af4ff));
+    }
+
+
+    input:checked ~ .checkmark::after {
+        display: block;
+        background-image: url("../src/images/icon-check.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+   
+    }
+
+    input:hover ~ .checkmark::before {
+            background-image: linear-gradient(to top left, (#d05aff, #5af4ff));
+            }
+}
+
+.todo-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    .delete-todo {
+        margin-right: 1.1rem;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        opacity: 0;
+        transition: all 200ms ease-in-out;
+    }
+
+    &:hover .delete-todo {
+        opacity: 1;
+
+       
+    }
+
+
+}
+
+.controls {
+    padding: 0 1rem;
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: $VeryDarkGrayishBlue;
+}
+
+.segregate-btn,
+.clear-btn {
+    background: none;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: $VeryDarkGrayishBlue;
+    margin: 0 0.5rem;
+
+    &:hover,
+    &:active {
+        color: $BrightBlue;
+    }
+}
+
+.reorder {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: $VeryDarkGrayishBlue;
+}
 
 .attribution {
     color: $DarkGrayishBlue;
