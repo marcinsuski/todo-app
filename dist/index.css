@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  width: clamp(20rem, 3wv + 18rem, 42rem);
+  width: clamp(20rem, 5vw + 25rem, 42rem);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -47,6 +47,7 @@ body {
   width: 100%;
   margin-bottom: 1rem;
   border-radius: 5px;
+  background-color: hsl(235deg, 24%, 19%);
 }
 .add-todo input {
   width: 100%;
@@ -55,16 +56,19 @@ body {
   border: transparent;
   padding: 0.5rem;
   border-radius: 5px;
-  background-color: hsl(235deg, 24%, 19%);
+  background-color: transparent;
 }
 
 .todos {
   width: 100%;
   border-radius: 5px;
+  background-color: hsl(235deg, 24%, 19%);
+  margin-bottom: 2rem;
 }
 
 .todo-list {
   width: 100%;
+  background-color: transparent;
 }
 .todo-list .todo-item {
   width: 100%;
@@ -72,15 +76,20 @@ body {
   height: 3rem;
   outline: transparent;
   border: none;
-  background-color: hsl(235deg, 24%, 19%);
+  background-color: transparent;
   border-bottom: 1px solid hsl(237deg, 14%, 26%);
   display: flex;
   align-items: center;
 }
 .todo-list .todo-item .todo-container {
+  width: 18px;
+  height: 18px;
+  display: block;
   position: relative;
-  display: inline-block;
-  margin: 1rem;
+  display: flex;
+  margin: 0 1rem;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 .todo-list .todo-item .todo-container input {
@@ -92,14 +101,35 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  height: 18px;
+  width: 18px;
   border-radius: 50%;
-  border-bottom: 2px solid hsl(237deg, 14%, 26%);
-  background-color: hsl(235deg, 24%, 19%);
+  border: 1px solid hsl(237deg, 14%, 26%);
+  background-color: transparent;
 }
-.todo-list .todo-item .todo-container .checkmark .input:checked {
-  background-color: red;
+.todo-list .todo-item .todo-container .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.todo-list .todo-item .todo-container .todo-container input:checked ~ .checkmark:after {
+  display: block;
+}
+.todo-list .todo-item .todo-container .todo-container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: black;
+}
+.todo-list .todo-item .todo-container input:checked ~ .checkmark {
+  background-image: linear-gradient(to top left, #d05aff, #5af4ff);
+}
+.todo-list .todo-item .todo-container input:checked ~ .checkmark::after {
+  background-image: url("../src/images/icon-check.svg");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .attribution {
