@@ -7,9 +7,11 @@ const amount = document.querySelector(".todos-amount");
 const all = document.querySelector("#all");
 const active = document.querySelector("#active");
 const completed = document.querySelector("#completed");
-const clear = document.querySelector("#clear-btn");
+const clear = document.querySelector(".clear-btn");
+
 
 const todos = [];
+
 
 //Adding Todos
 addTodo.addEventListener("click", createTodo);
@@ -23,23 +25,25 @@ function createTodo(e) {
         amount.innerText = `${todos.length} item${
             todos.length > 1 ? "s" : ""
         } left`;
+        console.log(todos);
     };
 
     const toggleCompleted = () => {
         if (!checkbox.classList.contains("checkbox-checked")) {
             checkbox.classList.add("checkbox-checked");
-            todoContent.classList.add("completed");
+            // todoContent.classList.add("completed");
+            task.classList.add("completed");
             let currentItem = todos.find((obj) => obj.id === currentId);
             currentItem.completed = !currentItem.completed;
         } else {
             checkbox.classList.remove("checkbox-checked");
-            todoContent.classList.remove("completed");
+            // todoContent.classList.remove("completed");
+            task.classList.remove("completed");
             let currentItem = todos.find((obj) => obj.id === currentId);
             currentItem.completed = !currentItem.completed;
-
         }
-
-    };    
+        console.log(todos);
+    };
 
     let task = document.createElement("div");
     task.classList.add("todo-item");
@@ -88,40 +92,74 @@ function createTodo(e) {
 
     let currentId = todos[todos.length - 1].id;
 
-    amount.innerText = `${todos.length} item${
-        todos.length > 1 ? "s" : ""
-    } left`;
-
-
+    checkAmountLeft();
+    newTodo.focus();
     console.log(todos);
 }
 
+const checkAmountLeft = () => {
+    amount.innerText = `${todos.length} item${
+        todos.length > 1 ? "s" : ""
+    } left`;
+}
 
- 
+
+const filterAll = () => {
+    let items = [...TodoList.children];
+    items.forEach((item) => {
+        item.style.display = "flex";
+    });
+    completed.classList.remove("active");
+    active.classList.remove("active");
+    all.classList.add("active");
+};
 
 const filterActive = () => {
-    const tasks = document.querySelectorAll('todo-item');
-    const todoContent = document.querySelectorAll('todo-content');
-   checkbox.forEach(box => !box.classList.contains('checkbox-checked') ? box.parentElement.parentElement.style.display = 'none' : box.parentElement.parentElement.style.display = 'flex')
-console.log(checkbox);
-   
-   };
-   const filterCompleted = () => {
-//        const tasks = document.querySelectorAll('todo-item');
-//        const todoContent = document.querySelectorAll('todo-content');
-//    tasks.forEach(task => !todoContent.classList.contains('completed') ? todoContent.style.display = "none" : task.todoContent.display = "flex")
-   let items = TodoList.children;
- 
-    items.forEach(item => {
-        if(!item.children[1].classList.contains("completed")) {
-            item.style.display = 'flex';
+    let items = [...TodoList.children];
+    items.forEach((item) => {
+        if (!item.classList.contains("completed")) {
+            item.style.display = "flex";
         } else {
-            item.style.display = 'none';
+            item.style.display = "none";
         }
     });
-   };
+    all.classList.remove("active");
+    completed.classList.remove("active");
+    active.classList.add("active");
+};
 
+const filterCompleted = () => {
+    let items = [...TodoList.children];
+    items.forEach((item) => {
+        if (!item.classList.contains("completed")) {
+            item.style.display = "none";
+          
+        } else {
+            item.style.display = "flex";
+        }
+    });
+    all.classList.remove("active");
+    active.classList.remove("active");
+    completed.classList.add("active");
+};
+
+function clearCompleted() {
+    let items = [...TodoList.children];
+    // let currentId = todos[todos.length - 1].id;
+    items.forEach((item) => {
+        if (item.classList.contains("completed")) {
+        todos.filter((el) => el.completed !== true);
    
+        item.remove();
+        } else {
+            return;
+        }      
 
-   active.addEventListener('click', filterActive);
-   completed.addEventListener('click', filterCompleted);
+    });
+
+};
+
+all.addEventListener("click", filterAll);
+active.addEventListener("click", filterActive);
+completed.addEventListener("click", filterCompleted);
+clear.addEventListener("click", clearCompleted);

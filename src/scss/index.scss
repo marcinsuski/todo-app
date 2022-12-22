@@ -209,11 +209,13 @@ body {
     &:active {
         color: $BrightBlue;
     }
+ 
 }
 
-.hidden {
-    display: none;
+.active {
+    color: $BrightBlue;
 }
+
 
 .reorder {
     font-size: 0.7rem;
