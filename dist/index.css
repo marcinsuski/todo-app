@@ -5,7 +5,7 @@
 }
 
 body {
-  width: 100vw;
+  width: auto;
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
   background-color: hsl(235deg, 21%, 11%);
@@ -102,7 +102,7 @@ body {
   text-decoration: line-through;
 }
 
-.todo-container {
+.checkbox-container {
   width: 18px;
   height: 18px;
   display: block;
@@ -113,13 +113,7 @@ body {
   justify-content: center;
   cursor: pointer;
 }
-.todo-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 2;
-}
-.todo-container .checkmark {
+.checkbox-container .checkbox {
   position: absolute;
   top: 0;
   left: 0;
@@ -129,21 +123,14 @@ body {
   background-clip: padding-box;
   background-color: hsl(235deg, 24%, 19%);
   border: 1px solid hsl(237deg, 14%, 26%);
+  cursor: pointer;
 }
-.todo-container .checkmark:before {
+.checkbox-container .checkbox:hover ~ .checkbox::before {
   content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  bottom: -4px;
-  right: -4px;
-  border-radius: 50%;
-  border: 1px solid hsl(237deg, 14%, 26%);
   background-image: linear-gradient(to top left, #d05aff, #5af4ff);
   display: block;
-  z-index: -1;
 }
-.todo-container .checkmark:after {
+.checkbox-container .checkbox:after {
   content: "";
   position: absolute;
   display: none;
@@ -152,17 +139,15 @@ body {
   width: 8px;
   height: 8px;
 }
-.todo-container input:checked ~ .checkmark {
+.checkbox-container .checkbox-checked {
   background-image: linear-gradient(to top left, #d05aff, #5af4ff);
+  z-index: 2;
 }
-.todo-container input:checked ~ .checkmark::after {
+.checkbox-container .checkbox-checked::after {
   display: block;
   background-image: url("../src/images/icon-check.svg");
   background-position: center;
   background-repeat: no-repeat;
-}
-.todo-container input:hover ~ .checkmark::before {
-  background-image: linear-gradient(to top left, #d05aff, #5af4ff);
 }
 
 .todo-content {
@@ -213,6 +198,10 @@ body {
 .clear-btn:hover,
 .clear-btn:active {
   color: hsl(220deg, 98%, 61%);
+}
+
+.hidden {
+  display: none;
 }
 
 .reorder {

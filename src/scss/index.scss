@@ -1,7 +1,7 @@
 @use "config" as *;
 
 body {
-    width: 100vw;
+    width: auto;
 
     font-family: "Josefin Sans", sans-serif;
     font-size: 18px;
@@ -95,15 +95,17 @@ body {
         border-bottom: 1px solid $VeryDarkGrayishBlue2;
         display: flex;
         align-items: center;
+
     }
 }
+
 
 .completed {
     color: $DarkGrayishBlue;
     text-decoration: line-through;
 }
 
-.todo-container {
+.checkbox-container {
     width: 18px;
     height: 18px;
     display: block;
@@ -114,14 +116,8 @@ body {
     justify-content: center;
     cursor: pointer;
 
-    input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        z-index: 2;
-    }
 
-    .checkmark {
+    .checkbox {
         position: absolute;
         top: 0;
         left: 0;
@@ -131,25 +127,16 @@ body {
         background-clip: padding-box;
         background-color: $VeryDarkDesaturatedBlue;
         border: 1px solid $VeryDarkGrayishBlue2;
-        
+        cursor: pointer;
+
+        &:hover ~ .checkbox::before {
+            content: "";
+            background-image: linear-gradient(to top left, (#d05aff, #5af4ff));
+            display: block;
+        }
     }
 
-    .checkmark:before {
-        content: "";
-        position: absolute;
-        top: -4px;
-        left: -4px;
-        bottom: -4px;
-        right: -4px;
-        border-radius: 50%;
-        border: 1px solid $VeryDarkGrayishBlue2;
-        background-image: linear-gradient(to top left, (#d05aff, #5af4ff));
-        display: block;
-        z-index: -1;
-
-    }
-
-    .checkmark:after {
+    .checkbox:after {
         content: "";
         position: absolute;
         display: none;
@@ -157,25 +144,19 @@ body {
         left: 4px;
         width: 8px;
         height: 8px;
-
     }
 
-    input:checked ~ .checkmark {
+    .checkbox-checked {
         background-image: linear-gradient(to top left, (#d05aff, #5af4ff));
+        z-index: 2;
     }
 
-
-    input:checked ~ .checkmark::after {
+    .checkbox-checked::after {
         display: block;
         background-image: url("../src/images/icon-check.svg");
         background-position: center;
         background-repeat: no-repeat;
-   
     }
-
-    input:hover ~ .checkmark::before {
-            background-image: linear-gradient(to top left, (#d05aff, #5af4ff));
-            }
 }
 
 .todo-content {
@@ -197,13 +178,10 @@ body {
 
     &:hover .delete-todo {
         opacity: 1;
-
-       
     }
     .delete-todo:hover {
         color: $BrightBlue;
     }
-
 }
 
 .controls {
@@ -231,6 +209,10 @@ body {
     &:active {
         color: $BrightBlue;
     }
+}
+
+.hidden {
+    display: none;
 }
 
 .reorder {
