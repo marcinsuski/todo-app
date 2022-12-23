@@ -73,14 +73,16 @@ function createTodo(e) {
         return;
     } else {
         todoContent.appendChild(content);
+        let taskId = Math.trunc(Math.random() * 10000);
         todos.push({
-            id: Math.random() * 1000,
+            id: taskId,
             name: `${newTodo.value}`,
             completed: checkbox.classList.contains("checkbox-checked")
                 ? true
                 : false,
         });
-
+        task.setAttribute('id', taskId); 
+      
         //Reset input value
         newTodo.value = "";
     }
@@ -95,6 +97,7 @@ function createTodo(e) {
     checkAmountLeft();
     newTodo.focus();
     console.log(todos);
+
 }
 
 const checkAmountLeft = () => {
@@ -148,13 +151,13 @@ function clearCompleted() {
     // let currentId = todos[todos.length - 1].id;
     items.forEach((item) => {
         if (item.classList.contains("completed")) {
-        todos.filter((el) => el.completed !== true);
-   
-        item.remove();
+                item.remove();
+        
         } else {
             return;
         }      
-
+console.log(items);
+console.log(todos);
     });
 
 };
@@ -163,3 +166,6 @@ all.addEventListener("click", filterAll);
 active.addEventListener("click", filterActive);
 completed.addEventListener("click", filterCompleted);
 clear.addEventListener("click", clearCompleted);
+
+
+// todos.filter((el) => el.completed !== true);
