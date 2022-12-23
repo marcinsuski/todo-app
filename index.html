@@ -20,19 +20,31 @@
         <link rel="stylesheet" href="./dist/index.css" />
     </head>
 
-    <body>
+    <body class="body">
         <div class="container">
             <div class="header">
                 <h1>Todo</h1>
-                <img src="./src/images/icon-sun.svg" alt="lightmode" />
+                <div class="togglemode">
+                    <div class="lightmode">
+                        <img
+                            src="./src/images/icon-sun.svg"
+                            class="togglemode"
+                            alt="lightmode"
+                        />
+                    </div>
+                    <div class="darkmode hidden">
+                        <img
+                            src="./src/images/icon-moon.svg"
+                            class="togglemode"
+                            alt="darkmode"
+                            
+                        />
+                    </div>
+                </div>
             </div>
             <div class="add-todo">
-             
-                    <div class="checkbox-container">
-                        <button class="box"></button>
-                  
-                    </div>
-              
+                <div class="checkbox-container"></div>
+
                 <input
                     type="text"
                     id="newTodo"
@@ -41,16 +53,15 @@
                 <button id="submit">Add</button>
             </div>
             <div class="todos">
-                <div class="todo-list">
-                   
-                   
-                </div>
+                <div class="todo-list"></div>
                 <div class="controls">
                     <div class="items">
                         <span class="todos-amount">0 items left</span>
                     </div>
                     <div class="segregate">
-                        <button class="segregate-btn active" id="all">All</button>
+                        <button class="segregate-btn active" id="all">
+                            All
+                        </button>
                         <button class="segregate-btn" id="active">
                             Active
                         </button>

@@ -91,7 +91,7 @@ body {
   height: 3rem;
   outline: transparent;
   border: none;
-  background-color: transparent;
+  background-color: inherit;
   border-bottom: 1px solid hsl(237deg, 14%, 26%);
   display: flex;
   align-items: center;
@@ -222,4 +222,13 @@ body {
 .attribution a {
   color: hsl(228deg, 45%, 44%);
   text-decoration: none;
+}
+
+.light-mode {
+  background-color: hsl(0deg, 0%, 98%);
+  color: hsl(233deg, 14%, 35%);
+}
+
+.hidden {
+  display: none;
 }/*# sourceMappingURL=index.css.map */

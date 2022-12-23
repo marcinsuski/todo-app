@@ -9,9 +9,7 @@ const active = document.querySelector("#active");
 const completed = document.querySelector("#completed");
 const clear = document.querySelector(".clear-btn");
 
-
 const todos = [];
-
 
 //Adding Todos
 addTodo.addEventListener("click", createTodo);
@@ -81,8 +79,8 @@ function createTodo(e) {
                 ? true
                 : false,
         });
-        task.setAttribute('id', taskId); 
-      
+        task.setAttribute("id", taskId);
+
         //Reset input value
         newTodo.value = "";
     }
@@ -97,15 +95,14 @@ function createTodo(e) {
     checkAmountLeft();
     newTodo.focus();
     console.log(todos);
-
 }
 
 const checkAmountLeft = () => {
-    amount.innerText = `${todos.length} item${
-        todos.length > 1 ? "s" : ""
+    let items = [...TodoList.children];
+    amount.innerText = `${items.length} item${
+        items.length > 1 ? "s" : ""
     } left`;
-}
-
+};
 
 const filterAll = () => {
     let items = [...TodoList.children];
@@ -136,7 +133,6 @@ const filterCompleted = () => {
     items.forEach((item) => {
         if (!item.classList.contains("completed")) {
             item.style.display = "none";
-          
         } else {
             item.style.display = "flex";
         }
@@ -148,19 +144,16 @@ const filterCompleted = () => {
 
 function clearCompleted() {
     let items = [...TodoList.children];
-    // let currentId = todos[todos.length - 1].id;
+
     items.forEach((item) => {
         if (item.classList.contains("completed")) {
-                item.remove();
-        
+            item.remove();
         } else {
             return;
-        }      
-console.log(items);
-console.log(todos);
+        }
+        checkAmountLeft();
     });
-
-};
+}
 
 all.addEventListener("click", filterAll);
 active.addEventListener("click", filterActive);
@@ -168,4 +161,24 @@ completed.addEventListener("click", filterCompleted);
 clear.addEventListener("click", clearCompleted);
 
 
-// todos.filter((el) => el.completed !== true);
+// Light Mode
+const toggleMode = document.querySelector('.togglemode');
+const lightmode = document.querySelector('.lightmode');
+const darkmode = document.querySelector('.darkmode');
+const AddTodo = document.querySelector('.add-todo');
+const controls = document.querySelector('.controls');
+const todoItem = document.querySelector(".todo-item");
+const body = document.querySelector('.body');
+
+toggleMode.addEventListener('click', toggleDarkMode);
+
+function toggleDarkMode() {
+    lightmode.classList.toggle('hidden');
+    darkmode.classList.toggle('hidden');
+    AddTodo.classList.toggle('light-mode');
+    body.classList.toggle('light-mode');
+    controls.classList.toggle('light-mode');
+    todoItem.classList.toggle('light-mode');
+
+  
+}

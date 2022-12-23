@@ -14,7 +14,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+   
 }
+
 
 .container {
     width: clamp(20rem, 10vw + 20rem, 42rem);
@@ -91,7 +93,7 @@ body {
         height: 3rem;
         outline: transparent;
         border: none;
-        background-color: transparent;
+        background-color: inherit;
         border-bottom: 1px solid $VeryDarkGrayishBlue2;
         display: flex;
         align-items: center;
@@ -234,4 +236,13 @@ body {
 .attribution a {
     color: hsl(228, 45%, 44%);
     text-decoration: none;
+}
+
+.light-mode {
+    background-color: $VeryLightGray;
+    color: $VeryDarkGrayishBlue;
+}
+
+.hidden {
+    display: none;
 }
