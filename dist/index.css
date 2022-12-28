@@ -79,6 +79,7 @@ body {
   border-radius: 5px;
   background-color: hsl(235deg, 24%, 19%);
   margin-bottom: 2rem;
+  box-shadow: 0 0 10px hsla(0deg, 0%, 0%, 0.5);
 }
 
 .todo-list {
@@ -120,8 +121,7 @@ body {
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  background-clip: padding-box;
-  background-color: hsl(235deg, 24%, 19%);
+  background-color: transparent;
   border: 1px solid hsl(237deg, 14%, 26%);
   cursor: pointer;
 }

@@ -23,7 +23,7 @@ function createTodo(e) {
         amount.innerText = `${todos.length} item${
             todos.length > 1 ? "s" : ""
         } left`;
-        console.log(todos);
+        checkAmountLeft();
     };
 
     const toggleCompleted = () => {
@@ -169,16 +169,21 @@ const AddTodo = document.querySelector('.add-todo');
 const controls = document.querySelector('.controls');
 const todoItem = document.querySelector(".todo-item");
 const body = document.querySelector('.body');
+const todoItems = document.querySelector('.todos');
 
 toggleMode.addEventListener('click', toggleDarkMode);
 
 function toggleDarkMode() {
     lightmode.classList.toggle('hidden');
     darkmode.classList.toggle('hidden');
-    AddTodo.classList.toggle('light-mode');
     body.classList.toggle('light-mode');
-    controls.classList.toggle('light-mode');
+    AddTodo.classList.toggle('light-mode');
+    todoItems.classList.toggle('light-mode');
     todoItem.classList.toggle('light-mode');
+    controls.classList.toggle('light-mode');
+ 
+   
+   
 
   
 }

@@ -81,6 +81,7 @@ body {
     border-radius: 5px;
     background-color: $VeryDarkDesaturatedBlue;
     margin-bottom: 2rem;
+    box-shadow: 0 0 10px hsl(0, 0, 0, 0.5);
 }
 
 .todo-list {
@@ -126,8 +127,8 @@ body {
         height: 18px;
         width: 18px;
         border-radius: 50%;
-        background-clip: padding-box;
-        background-color: $VeryDarkDesaturatedBlue;
+        // background-clip: padding-box;
+        background-color: transparent;
         border: 1px solid $VeryDarkGrayishBlue2;
         cursor: pointer;
 
@@ -166,6 +167,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
+    
     justify-content: space-between;
     cursor: pointer;
 
